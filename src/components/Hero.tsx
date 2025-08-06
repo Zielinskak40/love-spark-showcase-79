@@ -1,9 +1,20 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart, Users, MessageCircle, Shield } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { RegisterModal } from "@/components/RegisterModal";
 import heroBackground from "@/assets/hero-background.jpg";
 
 export const Hero = () => {
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const handleOpenRegisterModal = () => {
+    setIsRegisterModalOpen(true);
+  };
+
+  const handleCloseRegisterModal = () => {
+    setIsRegisterModalOpen(false);
+  };
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -32,8 +43,11 @@ export const Hero = () => {
       </div>
 
       {/* Logo */}
-      <div className="absolute top-8 left-8 z-20">
-        <Logo />
+      <div className="absolute top-8 left-8 right-8 z-20">
+        <Logo 
+          onLoginClick={handleOpenRegisterModal}
+          onRegisterClick={handleOpenRegisterModal}
+        />
       </div>
 
       {/* Content */}
@@ -55,6 +69,7 @@ export const Hero = () => {
           <Button 
             size="lg" 
             className="bg-white text-primary hover:bg-white/90 shadow-glow hover:shadow-romantic transition-all duration-300 text-lg px-8 py-6 rounded-full font-semibold hover:scale-105"
+            onClick={handleOpenRegisterModal}
           >
             Dołącz za darmo
           </Button>
@@ -76,6 +91,11 @@ export const Hero = () => {
           ))}
         </div>
       </div>
+
+      <RegisterModal 
+        isOpen={isRegisterModalOpen} 
+        onClose={handleCloseRegisterModal} 
+      />
     </div>
   );
 };

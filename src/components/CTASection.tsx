@@ -1,7 +1,18 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart, ArrowRight } from "lucide-react";
+import { RegisterModal } from "@/components/RegisterModal";
 
 export const CTASection = () => {
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const handleOpenRegisterModal = () => {
+    setIsRegisterModalOpen(true);
+  };
+
+  const handleCloseRegisterModal = () => {
+    setIsRegisterModalOpen(false);
+  };
   return (
     <section className="py-20 px-4 bg-gradient-hero relative overflow-hidden">
       {/* Floating hearts decoration */}
@@ -37,6 +48,7 @@ export const CTASection = () => {
           <Button 
             size="lg" 
             className="bg-white text-primary hover:bg-white/90 shadow-glow hover:shadow-romantic transition-all duration-300 text-lg px-8 py-6 rounded-full font-semibold group hover:scale-105"
+            onClick={handleOpenRegisterModal}
           >
             Rozpocznij za darmo
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -47,6 +59,11 @@ export const CTASection = () => {
           ✓ Rejestracja za darmo  ✓ Bez zobowiązań  ✓ Anuluj kiedy chcesz
         </div>
       </div>
+
+      <RegisterModal 
+        isOpen={isRegisterModalOpen} 
+        onClose={handleCloseRegisterModal} 
+      />
     </section>
   );
 };

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { ProfileCard } from "./ProfileCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { RegisterModal } from "@/components/RegisterModal";
 import profile1 from "@/assets/profile-female-1.jpg";
 import profile2 from "@/assets/profile-female-2.jpg";
 import profile3 from "@/assets/profile-3.jpg";
@@ -42,6 +44,15 @@ const profiles = [
 ];
 
 export const ProfilesSection = () => {
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const handleOpenRegisterModal = () => {
+    setIsRegisterModalOpen(true);
+  };
+
+  const handleCloseRegisterModal = () => {
+    setIsRegisterModalOpen(false);
+  };
   return (
     <section className="py-20 px-4 bg-muted/30">
       <div className="max-w-7xl mx-auto">
@@ -70,12 +81,18 @@ export const ProfilesSection = () => {
           <Button 
             size="lg" 
             className="bg-gradient-primary hover:shadow-romantic transition-all duration-300 text-lg px-8 py-6 rounded-full font-semibold group"
+            onClick={handleOpenRegisterModal}
           >
             Zobacz więcej profili
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
         </div>
       </div>
+
+      <RegisterModal 
+        isOpen={isRegisterModalOpen} 
+        onClose={handleCloseRegisterModal} 
+      />
     </section>
   );
 };
