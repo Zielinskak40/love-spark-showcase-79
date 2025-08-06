@@ -17,7 +17,7 @@ interface RegisterModalProps {
 export const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md mx-4 max-w-[90vw]">
         <DialogHeader className="text-center">
           <div className="flex justify-center mb-4">
             <div className="relative">
