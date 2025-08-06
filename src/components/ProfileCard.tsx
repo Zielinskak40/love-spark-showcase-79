@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, MessageCircle, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Heart, MessageCircle, MapPin, Eye } from "lucide-react";
 
 interface ProfileCardProps {
   name: string;
@@ -9,9 +10,10 @@ interface ProfileCardProps {
   bio: string;
   image: string;
   interests: string[];
+  onViewProfile?: () => void;
 }
 
-export const ProfileCard = ({ name, age, location, bio, image, interests }: ProfileCardProps) => {
+export const ProfileCard = ({ name, age, location, bio, image, interests, onViewProfile }: ProfileCardProps) => {
   return (
     <Card className="group relative overflow-hidden bg-gradient-card shadow-card hover:shadow-romantic transition-all duration-300 hover:scale-105 cursor-pointer">
       <div className="relative">
@@ -49,7 +51,7 @@ export const ProfileCard = ({ name, age, location, bio, image, interests }: Prof
       <div className="p-4">
         <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{bio}</p>
         
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 mb-4">
           {interests.slice(0, 3).map((interest, index) => (
             <Badge 
               key={index} 
@@ -65,6 +67,14 @@ export const ProfileCard = ({ name, age, location, bio, image, interests }: Prof
             </Badge>
           )}
         </div>
+
+        <Button 
+          className="w-full bg-gradient-primary hover:shadow-romantic transition-all duration-300 group"
+          onClick={onViewProfile}
+        >
+          <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300" />
+          Zobacz profil
+        </Button>
       </div>
     </Card>
   );

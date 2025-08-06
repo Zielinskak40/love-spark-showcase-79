@@ -72,7 +72,7 @@ export const ProfilesSection = () => {
               className="animate-in fade-in-50 slide-in-from-bottom-10"
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              <ProfileCard {...profile} />
+              <ProfileCard {...profile} onViewProfile={handleOpenRegisterModal} />
             </div>
           ))}
         </div>
