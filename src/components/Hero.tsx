@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Users, MessageCircle, Shield } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import heroBackground from "@/assets/hero-background.jpg";
 
 export const Hero = () => {
@@ -28,6 +29,11 @@ export const Hero = () => {
             }}
           />
         ))}
+      </div>
+
+      {/* Logo */}
+      <div className="absolute top-8 left-8 z-20">
+        <Logo />
       </div>
 
       {/* Content */}
